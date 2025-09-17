@@ -6,23 +6,19 @@ export default defineConfig({
   title: "Xed-Docs",
   description: "Documentation of Xed-Editor",
   themeConfig: {
+    search: {
+      provider: 'local'
+    },
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
     ],
 
-    sidebar: [
-      {
-        text: 'Examples',
-        items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
-        ]
-      }
-    ],
-
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/Xed-Editor/Xed-Editor' }
+      { icon: 'github', link: 'https://github.com/Xed-Editor/Xed-Editor' },
+      { icon: 'discord', link: 'https://discord.gg/6bKzcQRuef' },
+      { icon: 'telegram', link: 'https://t.me/XedEditor' },
     ]
+    
   }
 })

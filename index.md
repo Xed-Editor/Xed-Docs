@@ -7,11 +7,11 @@ hero:
   tagline: "Comprehensive guides, tutorials, and API references for Xed-Editor"
   actions:
     - theme: brand
-      text: Guides
+      text: Get Started
       link: /guides/guides.md
     - theme: alt
-      text: Plugin API
-      link: /plugins/plugin-api.md
+      text: Download
+      link: /guides/download.md
 
 features:
   - title: Material You (Material 3)
