@@ -7,6 +7,9 @@ npm install
 npm run docs:dev
 ```
 
+# hosted at
+https://xed-editor.github.io/Xed-Docs/
+
 
 # docs for writing docs?
 
