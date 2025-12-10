@@ -8,10 +8,10 @@ hero:
   actions:
     - theme: brand
       text: Get Started
-      link: /guides/guides.md
+      link: /docs/index.md
     - theme: alt
       text: Download
-      link: /guides/download.md
+      link: /docs/download.md
 
 features:
   - title: Material You (Material 3)
