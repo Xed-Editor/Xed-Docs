@@ -5,7 +5,7 @@ title: Enviroment Setup
 
 # ⚙️ Environment Setup
 
-Xed-Editor plugins are developed similarly to a standard Android application, sharing the same build tools and environment. This guide assumes you are using **Android Studio** on a desktop operating system (Windows, macOS, or Linux).
+Xed-Editor extensions are developed similarly to a standard Android application, sharing the same build tools and environment. This guide assumes you are using **Android Studio** on a desktop operating system (Windows, macOS, or Linux).
 
 > **Note:** While alternative methods exist (e.g., using GitHub Actions or running the Android SDK on ARM devices), this guide focuses on the standard local development setup using Android Studio for simplicity.
 
@@ -23,7 +23,7 @@ Ensure your development environment meets these requirements:
 
 -----
 
-### 2. Clone the Plugin Template
+### 2. Clone the Extension Template
 
 The quickest way to start is by cloning the official template repository.
 
@@ -37,24 +37,24 @@ git clone https://github.com/Xed-Editor/pluginTemplate
 cd pluginTemplate
 ```
 
-### 3. Build the Plugin Package
+### 3. Build the Extension Package
 
-To compile the plugin and generate the output file, use the provided shell script.
+To compile the extension and generate the output file, use the provided shell script.
 
-This command builds the plugin in **debug mode** (which is recommended for initial testing and development):
+This command builds the extension in **debug mode** (which is recommended for initial testing and development):
 
 ```bash
 sh compileDebug.sh
 ```
 
-If the compilation process completes without errors, you have successfully generated your first Xed-Editor plugin package!
+If the compilation process completes without errors, you have successfully generated your first Xed-Editor extension package!
 
 ### 4. Locate the Output File
 
-After a successful build, the final plugin package is a compressed file located in the `output/` directory:
+After a successful build, the final extension package is a compressed file located in the `output/` directory:
 
 ```
-output/YourPluginName.zip
+output/YourExtensionName.zip
 ```
 
 This `.zip` file is the deliverable: it contains all the necessary code and metadata and is the file you must upload or load directly into the **Xed-Editor** application.

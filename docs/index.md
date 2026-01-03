@@ -9,10 +9,10 @@ hero:
 
 
 features: # This array creates the "cards"
-  - title: Plugins
-    details: Create full-featured plugins with UI, commands, settings, and lifecycle hooks
+  - title: Extensions
+    details: Create full-featured extensions with UI, commands, settings, and lifecycle hooks
     icon: 🧩 # Using an emoji for the icon is the easiest way
-    link: /docs/plugins/
+    link: /docs/extensions/
 
   - title: Terminal Extensions
     details: Add custom terminal emulators, shells, or enhance the built-in terminal
