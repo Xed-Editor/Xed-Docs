@@ -9,7 +9,8 @@ This documentation assumes you have a foundational understanding of the followin
 
 * **Java** and **Kotlin** (for core extension logic and Android integration).
 * **Android Development Concepts** (e.g., Activities, Services, Contexts).
-* **Linux Shell** (for command-line tools and scripting).
+* **Jetpack Compose** (for building modern Android UIs).
+* **Terminal Usage** (Bash on Linux/MacOS or CMD on Windows).
 :::
 
 We wish you a happy and productive learning experience! Let's get building!

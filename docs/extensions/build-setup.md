@@ -15,11 +15,9 @@ Xed-Editor extensions are developed similarly to a standard Android application,
 
 Ensure your development environment meets these requirements:
 
-  * **Android Studio** (Latest Stable Version)
-  * **Java Development Kit (JDK)** installed and configured.
-  * **Android SDK** install and configured.
+  * **Android Studio** (Including JDK and Android SDK).
   * **Git** installed for version control.
-  * A basic linux terminal/shell environment (Bash).
+  * A basic terminal/shell environment (Bash on Linux/MacOS or CMD on Windows).
 
 -----
 
@@ -31,10 +29,10 @@ You can do this either by using the built-in **`File > New > Project from Versio
 
 ```bash
 # Clone the template repository
-git clone https://github.com/Xed-Editor/pluginTemplate
+git clone https://github.com/Xed-Editor/Extension-Template
 
 # Navigate into the new project directory
-cd pluginTemplate
+cd Extension-Template
 ```
 
 ### 3. Build the Extension Package
@@ -44,7 +42,7 @@ To compile the extension and generate the output file, use the provided shell sc
 This command builds the extension in **debug mode** (which is recommended for initial testing and development):
 
 ```bash
-sh compileDebug.sh
+./compileDebug
 ```
 
 If the compilation process completes without errors, you have successfully generated your first Xed-Editor extension package!

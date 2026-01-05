@@ -12,14 +12,14 @@ Before you build, you must update the core metadata within the `manifest.json` f
 ```json
 {
   "id": "com.rk.demo",
-  "name": "PluginTemplate",
+  "name": "Extension template",
   "mainClass": "com.rk.demo.Main",
   "version": "1.0.0",
-  "description": "A demo plugin template project",
+  "description": "A demo extension template project",
   "authors": ["Rohit"],
-  "minAppVersion": 73,
-  "targetAppVersion": 73,
-  "repository": "https://github.com/Xed-Editor/pluginTemplate"
+  "minAppVersion": 80,
+  "targetAppVersion": 80,
+  "repository": "https://github.com/Xed-Editor/Extension-Template"
 }
 ```
 
@@ -57,4 +57,4 @@ Before you build, you must update the core metadata within the `manifest.json` f
 "io.companyname.xedextension.feature"
 ```
 
-Now you know exactly how to fill out `manifest.json` correctly — no more “extension failed to load” mysteries!
+Now you know exactly how to fill out `manifest.json` correctly so your extension loads correctly!
