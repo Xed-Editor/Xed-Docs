@@ -5,6 +5,9 @@ export default defineConfig({
   base: '/Xed-Docs/',
   title: "Xed-Docs",
   description: "Documentation of Xed-Editor",
+  ignoreDeadLinks: [
+    /^https?:\/\/localhost/,
+  ],
   themeConfig: {
     search: {
       provider: 'local'
@@ -34,6 +37,5 @@ export default defineConfig({
       { icon: 'discord', link: 'https://discord.gg/6bKzcQRuef' },
       { icon: 'telegram', link: 'https://t.me/XedEditor' },
     ]
-    
   }
 })
