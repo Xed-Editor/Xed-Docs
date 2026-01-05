@@ -1,6 +1,6 @@
 ---
 lang: en-US
-title: Enviroment Setup
+title: Environment Setup
 ---
 
 # ⚙️ Environment Setup

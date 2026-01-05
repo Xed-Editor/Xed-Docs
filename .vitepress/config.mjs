@@ -22,7 +22,7 @@ export default defineConfig({
           text: 'Getting Started',
         items: [
           { text: 'Introduction', link: '/docs/extensions/' },
-          { text: 'Enviroment Setup', link: '/docs/extensions/build-setup' },
+          { text: 'Environment Setup', link: '/docs/extensions/build-setup' },
           { text: "Manifest File", link: '/docs/extensions/manifestFile' },
           { text: 'Main.kt', link: '/docs/extensions/mainKt' },
           
