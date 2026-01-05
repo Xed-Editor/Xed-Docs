@@ -14,16 +14,16 @@ export default defineConfig({
       { text: 'Home', link: '/' },
     ],
     sidebar: {
-      "/docs/plugins/":[
+      "/docs/extensions/":[
         {
           text: 'Getting Started',
         items: [
-          { text: 'Introduction', link: '/docs/plugins/' },
-          { text: 'Enviroment Setup', link: '/docs/plugins/build-setup' },
-          { text: "Manifest File", link: '/docs/plugins/manifestFile' },
-          { text: 'Main.kt', link: '/docs/plugins/mainKt' },
+          { text: 'Introduction', link: '/docs/extensions/' },
+          { text: 'Enviroment Setup', link: '/docs/extensions/build-setup' },
+          { text: "Manifest File", link: '/docs/extensions/manifestFile' },
+          { text: 'Main.kt', link: '/docs/extensions/mainKt' },
           
-          { text: 'Publishing Plugin', link: '/docs/plugins/publishing' },
+          { text: 'Publishing Extension', link: '/docs/extensions/publishing' },
         ]
         }
       ],
