@@ -44,13 +44,14 @@ When dynamic colors are enabled the active theme is replaced with the Monet-base
 This means you either use a custom theme or rely on dynamic system theming, but not both at the same
 time.
 :::
-
 ## Installing Themes
 
-A theme is just a JSON file. You can install it by going to **`Settings → Themes → Add Theme`** and
-selecting the theme JSON file from storage.
+A theme is distributed as a `.xed` package (a ZIP file) that contains the color palette and package
+metadata. You can install it by going to **`Settings → Store → Theme → Add Theme`** and selecting the `.xed`
+package from storage.
 
-In addition, themes can also be installed directly from the extension marketplace inside the settings.
+In addition, themes can also be installed directly from the extension marketplace inside the
+settings.
 
 ## Creating Custom Themes
 
@@ -62,37 +63,60 @@ Instead of creating a theme from scratch, you can use
 the [Theme-Template](https://github.com/Xed-Editor/Theme-Template) repository as a starting point.
 :::
 
-### Basic Structure
+A theme package consists of two separate JSON files:
+
+- `theme.json` – defines the color palettes for light and dark mode
+- `manifest.json` – defines the package metadata (e.g. `id`, `name`, `version`)
+
+#### theme.json
 
 ```json
 {
-  "id": "unique-theme-id",
-  "name": "My Theme",
-  "minAppVersion": 75,
-  "inheritBase": true,
+  "$schema": "https://raw.githubusercontent.com/Xed-Editor/Theme-Template/refs/heads/main/schema/schema.json",
   "light": {},
   "dark": {}
 }
 ```
 
-### Top-Level Properties
+The `$schema` property points to the theme JSON schema and enables validation and auto-completion
+in editors that support JSON schemas.
 
-| Property        | Type            | Required            | Description                                                                    |
-|-----------------|-----------------|---------------------|--------------------------------------------------------------------------------|
-| `id`            | string          | Yes                 | Unique identifier for the theme                                                |
-| `name`          | string          | Yes                 | Display name for the theme                                                     |
-| `minAppVersion` | integer \| null | Yes (default: null) | Minimum Xed-Editor version code supported. `null` means no minimum restriction |
-| `inheritBase`   | boolean         | No (default: true)  | Whether to [inherit](#base-inheritance) `tokenColors` from base theme          |
-| `light`         | object          | No                  | [Color palette](#color-palettes) for light mode                                |
-| `dark`          | object          | No                  | [Color palette](#color-palettes) for dark mode                                 |
+#### manifest.json
 
-You can omit optional fields. If a field is missing, the base theme's value will be used as a
-fallback. This applies to all colors in the theme file except for `tokenColors` if `inheritBase` is
-set to `false` ([Base inheritance](#base-inheritance)).
+```json
+{
+  "id": "unique-theme-id",
+  "name": "My Theme",
+  "version": "1.0.0",
+  "type": "theme",
+  "author": {
+    "displayName": "Unknown"
+  },
+  "repository": "https://github.com/you/my-theme",
+  "license": "MIT",
+  "tags": [],
+  "minAppVersion": 87,
+  "inheritBase": true
+}
+```
+
+### Manifest Properties
+
+| Property        | Type            | Required           | Description                                                                    |
+|-----------------|-----------------|--------------------|--------------------------------------------------------------------------------|
+| `id`            | string          | Yes                | Unique identifier for the theme                                                |
+| `name`          | string          | Yes                | Display name for the theme                                                     |
+| `version`       | string          | No                 | Version number (like `1.0.0`)                                                  |
+| `type`          | string          | No                 | Package type, always `theme` for themes                                        |
+| `author`        | object          | No                 | Contains `displayName` and optional `github` handle                            |
+| `repository`    | string          | No                 | URL to your source code repository                                             |
+| `license`       | string          | No                 | The license for your code (e.g., `MIT`)                                        |
+| `tags`          | string[]        | No                 | Keywords to help users find your theme                                         |
+| `minAppVersion` | integer \| null | No (default: null) | Minimum Xed-Editor version code supported. `null` means no minimum restriction |
+| `inheritBase`   | boolean         | No (default: true) | Whether to [inherit](#base-inheritance) `tokenColors` from base theme          |
 
 > [!NOTE]
-> All properties in the `theme.json` file are case-sensitive. Make sure to use the correct casing
-> when defining properties.
+> All properties are case-sensitive. Make sure to use the correct casing when defining properties.
 
 > [!NOTE]
 > The base theme is the default Xed-Editor theme that ships with the application, it's called
@@ -120,6 +144,31 @@ Each of the `light` and `dark` objects can contain the following color categorie
 | `tokenColors`    | object \| array | Syntax highlighting colors for the editor   |
 
 You can read more about each category in the [API Reference](#api-reference) section.
+
+You can omit optional fields. If a field is missing, the base theme's value will be used as a
+fallback. This applies to all colors in the theme file except for `tokenColors` if `inheritBase` is
+set to `false` ([Base inheritance](#base-inheritance)).
+
+### Building the Theme Package
+
+Once you have defined the color palettes in `theme.json` and the metadata in `manifest.json`, you can
+build the `.xed` package:
+
+```bash
+npm run build
+```
+
+or equivalently:
+
+```bash
+node build.js
+```
+
+This produces a ZIP package at `output/<id>.xed` that contains `theme.json`, `manifest.json` and —
+when present — `README.md`, `icon.png` and `CHANGELOG.md`.
+
+This `.xed` file can be [installed locally](#installing-themes) or uploaded when
+[publishing](#publish-a-theme) your theme.
 
 ## API Reference
 
@@ -367,12 +416,12 @@ Publishing a theme works in a very similar way to [publishing an extension](/doc
 
 First, you need to create an account on https://xed-editor.app.
 
-Once you are signed in, go to the theme page at https://xed-editor.app/themes. There you will find a **`Publish`** button.
-Click it and upload your theme by dragging and dropping the JSON manifest file into the upload area.
+Once you are signed in, There you will find a **`Publish`** button.
+Click it and upload your theme by dragging and dropping the built `.xed` package into the upload area.
 
 Once uploaded, your theme will appear in the extension marketplace inside the editor. From
 there, users can browse and install it like any other extension.
 
-Updating a theme follows the same rule as extensions. You just upload a new JSON file with an
-increased version number while keeping the same ID. This ensures that users can receive updates
-automatically without needing to reinstall anything manually.
+Updating a theme follows the same rule as extensions. You just upload a new `.xed` package with an
+increased version number in `manifest.json` while keeping the same ID. This ensures that users can
+receive updates automatically without needing to reinstall anything manually.
