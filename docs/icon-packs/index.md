@@ -14,8 +14,9 @@ set.
 
 ## Installing Icon Packs
 
-An icon pack is just a ZIP file containing a manifest JSON file and the icons. You can install it by
-going to **`Settings → Themes → Add Icon Pack`** and selecting the icon pack ZIP file from storage.
+An icon pack is distributed as a `.xed` package (a ZIP file) that contains a manifest JSON file and
+the icons. You can install it by going to **`Settings → Themes → Add Icon Pack`** and selecting the
+`.xed` package from storage.
 
 In addition, icon packs can also be installed directly from the extension marketplace inside the
 settings.
@@ -36,8 +37,10 @@ An icon pack is defined using a JSON manifest that maps patterns to icon files:
 
 ```json
 {
+  "$schema": "https://raw.githubusercontent.com/Xed-Editor/Icon-Template/refs/heads/main/schema/schema.json",
   "id": "unique-icon-pack-id",
   "name": "My Icon Pack",
+  "type": "icon_pack",
   "minAppVersion": 87,
   "applyTint": false,
   "icons": {
@@ -63,15 +66,23 @@ An icon pack is defined using a JSON manifest that maps patterns to icon files:
 }
 ```
 
+The `$schema` property points to the icon pack JSON schema and enables validation and
+auto-completion in editors that support JSON schemas.
+
 ## Top-Level Properties
 
 | Property        | Type            | Required            | Description                                                                    |
 |-----------------|-----------------|---------------------|--------------------------------------------------------------------------------|
+| `$schema`       | string          | No                  | URL to the icon pack JSON schema                                               |
 | `id`            | string          | Yes                 | Unique identifier of the icon pack                                             |
 | `name`          | string          | Yes                 | Display name of the icon pack                                                  |
+| `type`          | string          | No                  | Package type, always `icon_pack` for icon packs                                |
 | `applyTint`     | boolean         | No (default: false) | Whether icons should be tinted by the UI theme                                 |
 | `minAppVersion` | integer \| null | No (default: null)  | Minimum Xed-Editor version code supported. `null` means no minimum restriction |
 | `icons`         | object          | Yes                 | Icon mapping configuration                                                     |
+
+> [!WARNING]
+> The `id` must match the package name you use when publishing.
 
 ## Icon Mapping
 
@@ -124,6 +135,23 @@ Icon selection follows a strict priority order. The first match is always used:
 2. `defaultFolderExpanded`
 
 If none of these are defined the built-in default icons are used.
+
+## Building the Icon Pack
+
+Once you have defined the icon mappings in `manifest.json` and added the referenced icon assets, you
+can build the `.xed` package.
+
+The [Icon-Template](https://github.com/Xed-Editor/Icon-Template) repository ships with a build
+script. If you have [Node.js](https://nodejs.org/) installed, run:
+
+```bash
+node build.js
+```
+
+This produces the package at `dist/<id>-<version>.xed`.
+
+This `.xed` file can be [installed locally](#installing-icon-packs) or uploaded when
+[publishing](#publish-an-icon-pack) your icon pack.
 
 ## API Reference
 
@@ -267,6 +295,7 @@ registry and may change at any time. For the most up-to-date information, refer 
 | archive       | Archive        | zip, rar, 7z, tar, gz, bz2, xy                                                    |
 | executable    | Executable     | exe, dll, so, dylib, bin                                                          |
 | apk           | APK            | apk, xapk, apks                                                                   |
+| unknown       | Unknown        | –                                                                                 |
 
 Additionally, any custom language names are possible. These will only work, however, if the
 extension that registers this file type is installed.
@@ -283,11 +312,11 @@ Publishing an icon pack works in a very similar way to [publishing an extension]
 First, you need to create an account on https://xed-editor.app.
 
 Once you are signed in, go to the icon pack page at https://xed-editor.app/icon-packs. There you will find a **`Publish`** button.
-Click it and upload your icon pack by dragging and dropping the ZIP file of your release into the upload area.
+Click it and upload your icon pack by dragging and dropping the built `.xed` package into the upload area.
 
 Once uploaded, your icon pack will appear in the extension marketplace inside the editor. From
 there, users can browse and install it like any other extension.
 
-Updating an icon pack follows the same rule as extensions. You just upload a new ZIP file with an
-increased version number while keeping the same ID. This ensures that users can receive updates
+Updating an icon pack follows the same rule as extensions. You just upload a new `.xed` package with
+an increased version number while keeping the same ID. This ensures that users can receive updates
 automatically without needing to reinstall anything manually.
