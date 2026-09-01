@@ -6,19 +6,6 @@ layout: home # IMPORTANT: Set the layout to 'home'
 hero:
   name: "Documentation"
   tagline: "Comprehensive guides, tutorials, and API references for Xed-Editor"
-  actions:
-    - theme: brand
-      text: Getting Started
-      link: /docs/quick-start
-
-    - theme: alt
-      text: User Guide
-      link: /docs/terminal/
-
-    - theme: alt
-      text: Developer Guide
-      link: /docs/extensions/
-
 
 features:
   - title: Extensions
