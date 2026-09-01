@@ -302,11 +302,6 @@ extension that registers this file type is installed.
 
 ## Publish an Icon Pack
 
-::: warning
-This feature is still under development.
-:::
-
-
 Publishing an icon pack works in a very similar way to [publishing an extension](/docs/extensions/publishing).
 
 First, you need to create an account on https://xed-editor.app.
