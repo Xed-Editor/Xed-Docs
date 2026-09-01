@@ -408,10 +408,6 @@ contains the color settings for that scope. Colors values have to be in the hex 
 
 ## Publish a Theme
 
-::: warning
-This feature is still under development.
-:::
-
 Publishing a theme works in a very similar way to [publishing an extension](/docs/extensions/publishing).
 
 First, you need to create an account on https://xed-editor.app.
