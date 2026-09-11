@@ -17,7 +17,6 @@ export default defineConfig({
                 items: [
                     { text: 'Download', link: '/docs/download' },
                     { text: 'Quick Start', link: '/docs/quick-start' },
-                    { text: 'Editor Overview', link: '/docs/editor-overview' },
                 ],
             },
             {

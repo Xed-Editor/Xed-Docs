@@ -42,12 +42,6 @@ The following host paths are bound into the Ubuntu filesystem:
 | `<private>/local/stat`                                                          | `/proc/stat`         | Fake CPU stats (see [below](index.md#proc-virtualization))    |
 | `<private>/local/vmstat`                                                        | `/proc/vmstat`       | Fake memory stats (see [below](index.md#proc-virtualization)) |
 
-::: tip
-Individual mounts can be excluded on demand. The extension code can call
-`ubuntuProcess(excludeMounts = [...])` to run commands without certain
-bindings.
-:::
-
 ## How Xed-Editor Invokes PRoot
 
 Xed-Editor builds PRoot from source (the `proot` Gradle module) into three native binaries shipped
@@ -144,7 +138,7 @@ It also forwards Android's own environment (`ANDROID_DATA`, `ANDROID_ROOT`, `BOO
 so Android binaries can run inside the container when needed.
 
 ## The `xed` Command
-Implementation-wise, `xed` is a small native binary (`libxed_cli.so`) that:
+Implementation-wise, [`xed`](index.md#the-xed-command) is a small native binary (`libxed_cli.so`) that:
 
 1. Connects to a **local UNIX domain socket** named `xed_socket` in the abstract namespace.
 2. Sends the current working directory, followed by each file argument, NUL-terminated.
