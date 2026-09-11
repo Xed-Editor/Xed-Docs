@@ -53,7 +53,7 @@ If the compilation process completes without errors, you have successfully gener
 After a successful build, the extension package is a compressed file located in the `output/` directory:
 
 ```
-output/YourExtensionName.zip
+output/<id>.xed
 ```
 
-This `.zip` file contains all necessary code and metadata. You can install it directly in the Xed-Editor application using **`Settings > Extensions > Install from storage`**.
+This `.xed` package contains all necessary code and metadata. You can install it directly in the Xed-Editor application using **`Settings > Store > Install from storage`**.

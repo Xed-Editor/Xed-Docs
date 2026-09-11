@@ -17,13 +17,13 @@ export default defineConfig({
                 items: [
                     { text: 'Download', link: '/docs/download' },
                     { text: 'Quick Start', link: '/docs/quick-start' },
-                    { text: 'Editor Overview', link: '/docs/editor-overview' },
                 ],
             },
             {
                 text: 'User Guide',
                 items: [
                     { text: 'Terminal', link: '/docs/terminal/' },
+                    { text: 'Terminal (Advanced)', link: '/docs/terminal/advanced' },
                     { text: 'Runners', link: '/docs/runners/' },
                     { text: 'Git Integration', link: '/docs/git/' },
                     {

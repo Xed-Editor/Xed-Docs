@@ -15,11 +15,8 @@ set.
 ## Installing Icon Packs
 
 An icon pack is distributed as a `.xed` package (a ZIP file) that contains a manifest JSON file and
-the icons. You can install it by going to **`Settings → Themes → Add Icon Pack`** and selecting the
+the icons. You can install it by going to **`Settings → Store → Install from storage`** and selecting the
 `.xed` package from storage.
-
-In addition, icon packs can also be installed directly from the extension marketplace inside the
-settings.
 
 ## Creating an Icon Pack
 
@@ -37,10 +34,14 @@ An icon pack is defined using a JSON manifest that maps patterns to icon files:
 
 ```json
 {
-  "$schema": "https://raw.githubusercontent.com/Xed-Editor/Icon-Template/refs/heads/main/schema/schema.json",
+  "$schema": "https://raw.githubusercontent.com/Xed-Editor/Xed-Schemas/main/icon.json",
   "id": "unique-icon-pack-id",
   "name": "My Icon Pack",
   "type": "icon_pack",
+  "author": {
+    "displayName": "Unknown"
+  },
+  "repository": "https://github.com/you/my-icon-pack",
   "minAppVersion": 87,
   "applyTint": false,
   "icons": {
@@ -65,9 +66,6 @@ An icon pack is defined using a JSON manifest that maps patterns to icon files:
   }
 }
 ```
-
-The `$schema` property points to the icon pack JSON schema and enables validation and
-auto-completion in editors that support JSON schemas.
 
 ## Top-Level Properties
 
@@ -148,7 +146,7 @@ script. If you have [Node.js](https://nodejs.org/) installed, run:
 node build.js
 ```
 
-This produces the package at `dist/<id>-<version>.xed`.
+This produces the package at `output/<id>.xed`.
 
 This `.xed` file can be [installed locally](#installing-icon-packs) or uploaded when
 [publishing](#publish-an-icon-pack) your icon pack.
@@ -295,7 +293,6 @@ registry and may change at any time. For the most up-to-date information, refer 
 | archive       | Archive        | zip, rar, 7z, tar, gz, bz2, xy                                                    |
 | executable    | Executable     | exe, dll, so, dylib, bin                                                          |
 | apk           | APK            | apk, xapk, apks                                                                   |
-| unknown       | Unknown        | –                                                                                 |
 
 Additionally, any custom language names are possible. These will only work, however, if the
 extension that registers this file type is installed.
