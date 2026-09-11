@@ -24,6 +24,7 @@ export default defineConfig({
                 text: 'User Guide',
                 items: [
                     { text: 'Terminal', link: '/docs/terminal/' },
+                    { text: 'Terminal (Advanced)', link: '/docs/terminal/advanced' },
                     { text: 'Runners', link: '/docs/runners/' },
                     { text: 'Git Integration', link: '/docs/git/' },
                     {

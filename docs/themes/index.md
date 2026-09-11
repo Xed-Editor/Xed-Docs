@@ -47,7 +47,7 @@ time.
 ## Installing Themes
 
 A theme is distributed as a `.xed` package (a ZIP file) that contains the color palette and package
-metadata. You can install it by going to **`Settings → Store → Theme → Add Theme`** and selecting the `.xed`
+metadata. You can install it by going to **`Settings → Store → Install from storage`** and selecting the `.xed`
 package from storage.
 
 In addition, themes can also be installed directly from the extension marketplace inside the
@@ -65,27 +65,14 @@ the [Theme-Template](https://github.com/Xed-Editor/Theme-Template) repository as
 
 A theme package consists of two separate JSON files:
 
-- `theme.json` – defines the color palettes for light and dark mode
 - `manifest.json` – defines the package metadata (e.g. `id`, `name`, `version`)
+- `theme.json` – defines the color palettes for light and dark mode
 
-#### theme.json
-
-```json
+::: code-group
+```json [manifest.json]
 {
-  "$schema": "https://raw.githubusercontent.com/Xed-Editor/Theme-Template/refs/heads/main/schema/schema.json",
-  "light": {},
-  "dark": {}
-}
-```
-
-The `$schema` property points to the theme JSON schema and enables validation and auto-completion
-in editors that support JSON schemas.
-
-#### manifest.json
-
-```json
-{
-  "id": "unique-theme-id",
+  "$schema": "https://raw.githubusercontent.com/Xed-Editor/Xed-Schemas/main/theme-manifest.json",
+  "id": "com.demo.my_theme",
   "name": "My Theme",
   "version": "1.0.0",
   "type": "theme",
@@ -99,6 +86,14 @@ in editors that support JSON schemas.
   "inheritBase": true
 }
 ```
+```json [theme.json]
+{
+  "$schema": "https://raw.githubusercontent.com/Xed-Editor/Xed-Schemas/main/theme.json",
+  "light": {},
+  "dark": {}
+}
+```
+:::
 
 ### Manifest Properties
 
@@ -152,20 +147,15 @@ set to `false` ([Base inheritance](#base-inheritance)).
 ### Building the Theme Package
 
 Once you have defined the color palettes in `theme.json` and the metadata in `manifest.json`, you can
-build the `.xed` package:
+build the `.xed` package.
 
-```bash
-npm run build
-```
-
-or equivalently:
+The [Theme-Template](https://github.com/Xed-Editor/Theme-Template) repository ships with a build script. If you have Node.js installed, run:
 
 ```bash
 node build.js
 ```
 
-This produces a ZIP package at `output/<id>.xed` that contains `theme.json`, `manifest.json` and —
-when present — `README.md`, `icon.png` and `CHANGELOG.md`.
+This produces the package at `output/<id>.xed`.
 
 This `.xed` file can be [installed locally](#installing-themes) or uploaded when
 [publishing](#publish-a-theme) your theme.

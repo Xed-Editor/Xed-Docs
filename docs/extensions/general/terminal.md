@@ -131,5 +131,11 @@ val output = process.readStdout()
 val exitCode = process.awaitExit()
 ```
 
+You can pass `excludeMounts` to the `ubuntuProcess` function to run the command without
+certain [default bindings](/docs/terminal/advanced.md#default-bindings).
+
+Beyond that, the process instance offers several helper commands: `readStdout()`, `readStderr()`, `writeInput()`,
+`awaitExit()`, `terminate()`, `isRunning()`.
+
 This is useful if you need to feed input to a process dynamically or if you want to stream output in
 real-time instead of waiting for the process to finish.
