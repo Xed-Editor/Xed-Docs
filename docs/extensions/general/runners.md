@@ -1,6 +1,7 @@
 # The Runner API
 
-The Runner API allows extensions to provide custom ways to "run" files or projects as described [here](/docs/runners/index.md). These appear in
+The Runner API allows extensions to provide custom ways to "run" files or projects as
+described [here](/docs/runners/index.md). These appear in
 the run menu and can be used to compile code, launch web previews, or execute scripts.
 
 ## Runner Types
@@ -12,6 +13,7 @@ runners:
 - **ProjectRunner**: Targeted at a project root (e.g., building a Gradle project).
 
 ## Implementing a Runner
+
 ### FileRunner
 
 To create a file-based runner, you simply extend `FileRunner`:
@@ -19,7 +21,7 @@ To create a file-based runner, you simply extend `FileRunner`:
 ```kotlin
 class MyCustomRunner : FileRunner() {
     // ...
-    
+
     // Filter which files this runner can handle
     override fun matcher(fileObject: FileObject): Boolean {
         return fileObject.getExtension() == "myext"
@@ -81,6 +83,23 @@ override suspend fun stop() {
     myProcess?.destroy()
 }
 ```
+
+### Runner Settings
+
+If your runner requires configuration, you can enable settings by overriding `hasSettings` and
+`launchSettings`:
+
+```kotlin
+override val hasSettings = true
+
+override fun launchSettings(context: Context) {
+    settingsNavController.get()?.navigate("my_extension_settings")
+}
+```
+
+This displays a settings option for your runner. When clicked, `launchSettings` is invoked, allowing
+you to open your settings page through [custom screens](/docs/extensions/general/custom-screens.md)
+or [settings routes](/docs/extensions/settings.md#global-settings).
 
 ## Registering Runners
 
